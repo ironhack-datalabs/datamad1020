@@ -66,7 +66,7 @@ Manual vi: https://www.howtogeek.com/102468/a-beginners-guide-to-editing-text-fi
 Cualquier comando o comandos de bash se pueden almacenar en un fichero y ejecutar cuando queramos. 
 Obviamente puedes utilizar tu editor preferido. Creamos el fichero: 
 ```
-$ vi list_files.sh
+$ touch list_files.sh
 ```
 
 E incluimos el contenido que queramos. En este caso listar ficheros:
@@ -94,12 +94,6 @@ exercices  inputs  lorem  lorem-copy  modules  outputs  README.md
 * Crea un directorio nuevo que se llame como el contenido de la variable `name`.
 
 * Elimina ese directorio. 
-
-* Por cada archivo dentro de la carpeta `lorem` imprime el número de carácteres que tienen sus nombres. 
-Intenta primero mostrar los archivos mediante un bucle for 
-    1. Imprime los ficheros
-    2. Imprime las longitudes de los nombres de los ficheros
-    3. Imprime outputs con la siguiente estructura: `lorem has 5 characters lenght`
 
 * Muestra los procesos de forma jerárquica que se están ejecutando en tu ordenador:
     1. Usando el comando top o htop
