@@ -8,7 +8,7 @@ As a programmer, we must always pracatice our minds, our logic and our control o
 
 ## Getting Started
 
-Open the `main.ipynb` file in the `your-code` directory. Follow the instructions and add your code and explanations as necessary. By the end of this lab, you will have leveled up your coding game.
+Open the `main.ipynb` file. Follow the instructions and add your code and explanations as necessary. By the end of this lab, you will have leveled up your coding game.
 
 ## Deliverables
 
