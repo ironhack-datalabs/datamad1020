@@ -78,7 +78,7 @@ def test_operations(fn):
             self.assertEqual(fn(*self.input), self.output, f"Should be {self.output}")
     suite = unittest.TestSuite()
     for _ in range(100):
-        arr = ([random.randint(-10,10) for _ in range(random.randint(10,100))], random.choice(["+","-"]))
+        arr = ([random.randint(-10,10) for _ in range(random.randint(10,100))], random.choice(["+","*"]))
         def ans(arr,op):
             if op =="+": return sum(arr)
             else: return reduce(lambda a,b:a*b,arr,1)
