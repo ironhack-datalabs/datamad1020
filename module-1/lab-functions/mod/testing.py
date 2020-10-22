@@ -78,7 +78,7 @@ def test_operations(fn):
             self.assertEqual(fn(*self.input), self.output, f"Should be {self.output}")
     suite = unittest.TestSuite()
     for _ in range(100):
-        arr = ([random.randint(-10,10) for _ in range(random.randint(10,100))], random.choice(["+","-"]))
+        arr = ([random.randint(-10,10) for _ in range(random.randint(10,100))], random.choice(["+","*"]))
         def ans(arr,op):
             if op =="+": return sum(arr)
             else: return reduce(lambda a,b:a*b,arr,1)
@@ -139,7 +139,7 @@ def test_stdev(fn):
             self.output = output
 
         def runTest(self):
-            self.assertAlmostEqual(fn(self.input), self.output, f"Should be {self.output}")
+            self.assertAlmostEqual(fn(self.input), self.output, delta=5,I’m  msg=f"Should be {self.output}")
     suite = unittest.TestSuite()
     for _ in range(100):
         arr = [random.randint(-1000,1000) for _ in range(random.randint(10,100))]
@@ -169,7 +169,7 @@ def test_pangram(fn):
             self.input = input
             self.output = output
         def runTest(self):
-            self.assertAlmostEqual(fn(self.input), self.output, f"Should be {self.output}")
+            self.assertEqual(fn(self.input), self.output, f"Should be {self.output}")
     suite = unittest.TestSuite()
     tests = pangrams + ["".join([random.choice(ascii_lowercase) for _ in range(random.randint(25,100))]) for _ in range(15)] 
     for test in tests:
@@ -184,7 +184,7 @@ def test_alpha(fn):
             self.output = output
 
         def runTest(self):
-            self.assertAlmostEqual(fn(self.input), self.output, f"Should be {self.output}")
+            self.assertEqual(fn(self.input), self.output, f"Should be {self.output}")
     suite = unittest.TestSuite()
     tests = [",".join(["".join([random.choice(ascii_lowercase) for _ in range(random.randint(4,10))]) for _ in range(random.randint(4,25))]) for _ in range(100)] 
     for test in tests:
@@ -199,7 +199,7 @@ def test_pass(fn):
             self.output = output
             
         def runTest(self):
-            self.assertAlmostEqual(fn(self.input), self.output, f"Should be {self.output}")
+            self.assertEqual(fn(self.input), self.output, f"Should be {self.output}")
     suite = unittest.TestSuite()
     check_p = lambda string: sum([len(set(string)&set(c))>0 for c in [ascii_lowercase, ascii_uppercase, digits, "#@!$%&()^*[]{}"]] + [len(string) >= 8]) >= 5
     tests = ["".join([random.choice(ascii_lowercase*3+ascii_uppercase+digits+"#@!$%&()^*[]{}") for _ in range(random.randint(2,16))]) for _ in range(100)] 
