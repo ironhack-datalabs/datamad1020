@@ -139,7 +139,7 @@ def test_stdev(fn):
             self.output = output
 
         def runTest(self):
-            self.assertAlmostEqual(fn(self.input), self.output, delta=5,I’m  msg=f"Should be {self.output}")
+            self.assertAlmostEqual(fn(self.input), self.output, delta=5, msg=f"Should be {self.output}")
     suite = unittest.TestSuite()
     for _ in range(100):
         arr = [random.randint(-1000,1000) for _ in range(random.randint(10,100))]
