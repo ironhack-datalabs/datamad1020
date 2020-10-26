@@ -19,6 +19,7 @@ class Soldier:
 class Viking(Soldier):
     def __init__(self, name, health, strength):
         super().__init__(health, strength)
+        self.name = name
     def receiveDamage(self, damage):
         self.health -= damage
         if self.health > 0:
@@ -39,7 +40,7 @@ class Saxon(Soldier):
         if self.health > 0:
             return f"A Saxon has received {damage} points of damage"
         else:
-            return f"A Saxon has died in act of combat"
+            return f"A Saxon has died in combat"
 # War
 
 
@@ -56,15 +57,15 @@ class War:
         viking = choice(self.vikingArmy)
         saxon.receiveDamage(viking.attack())
         if saxon.health() == 0:
-            index = self.saxonArmy.index(saxon)
-            del self.saxonArmy(index)
+            saxonArmy_l = self.saxonArmy
+            saxonArmy_l.remove(saxon)
     def saxonAttack(self):
         saxon = choice(self.saxonArmy)
         viking = choice(self.vikingArmy)
         viking.receiveDamage(saxon.attack())
         if viking.health() == 0:
-            index = self.vikingArmy.index(viking)
-            del self.vikingArmy(index)
+            vikingArmy_l = self.vikingArmy
+            vikingArmy_l.remove(viking)
     def showStatus(self):
         if len(self.saxonArmy) == 0:
             return "Vikings have won the war of the century!"
