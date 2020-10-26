@@ -11,7 +11,6 @@ class Soldier:
         return self.strength
     def receiveDamage(self, damage):
         self.health -= damage
-        return self.health 
         
 
 # Viking
