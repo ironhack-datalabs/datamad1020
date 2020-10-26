@@ -22,21 +22,20 @@ class Soldier:
 
 class Viking(Soldier):
     def __init__(self, name, health, strength):
-        self.health = []
+        self.health = health
         self.strength = strength
-
-    def attack(self):
-        return self.strength
+        self.name = name
 
     def receiveDamage(self, damage):
         self.damage = damage
-        if damage in self.health:
-            self.health.remove(damage)
+        self.health -= self.damage
+        if self.health > 0:
+            return (f"{self.name} has received {self.damage} points of damage")
+        else:
+            return (f"{self.name} has died in act of combat")
 
-    def battleCry(self, damage):
-        self.damage = damage
-        if damage in self.health:
-            self.health.remove(damage)
+    def battleCry(self):
+        return "Odin Owns You All!"
 
 
 # Saxon
