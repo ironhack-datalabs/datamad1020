@@ -65,11 +65,12 @@ print(a,"\n"*3,d)
 
 
 #12. Multiply a and c. Assign the result to e.
-
+e = a*c
 
 
 #13. Does e equal to a? Why or why not?
-
+'''Si, e es igual que a porque en una multiplicacion normal se multiplica elemento a elemento y como todos los valores de c son 1 pues e se queda igual.
+Si la multiplicación fuese el producto matricial otro gallo cantaría. '''
 
 
 
