@@ -4,9 +4,10 @@ import random
 
 #2. Print the NUMPY version and the configuration.
 
-# print(f"Numpy version: {np.__version__}")
-# print("-"*25)
-# print(np.show_config())
+print(f"Numpy version: {np.__version__}")
+print("-"*25)
+print(np.show_config())
+print('\n\n')
 
 #3. Generate a 2x3x5 3-dimensional array with random values. Assign the array to variable "a"
 # Challenge: there are at least three easy ways that use numpy to generate random arrays. How many ways can you find?
@@ -18,6 +19,7 @@ a = np.random.randint(0, 100, (2,3,5))
 #4. Print a.
 
 print(a)
+print('\n\n')
 
 #5. Create a 5x2x3 3-dimensional array with all values equaling 1.
 #Assign the array to variable "b"
@@ -27,10 +29,12 @@ b = np.ones((5,2,3))
 #6. Print b.
 
 print(b)
+print('\n\n')
 
 #7. Do a and b have the same size? How do you prove that in Python code?
 
 print(a.shape == b.shape)
+print('\n\n')
 
 #8. Are you able to add a and b? Why or why not?
 
@@ -52,6 +56,11 @@ Porque ahora ambos arrays tienen el mismo tamaño y la misma forma: dos arrays d
 """
 #11. Print a and d. Notice the difference and relation of the two array in terms of the values? Explain.
 
+print(a)
+print('\n')
+print(d)
+print('\n\n')
+
 """
 Como el array b se ha creado con la función 'ones()', esta devuelve los valores en formato float. Al sumarse con a, los valores
 de este array pasan a ser floats también. 
@@ -64,6 +73,7 @@ e = a*c
 #13. Does e equal to a? Why or why not?
 
 print(e == a)
+print('\n\n')
 """
 Ambas variables son iguales. Pese a que los números de e llegan en formato float, al no tener ningún valor después del punto, siguen siendo enteros.
 """
@@ -74,6 +84,7 @@ d_max = np.max(d)
 d_min = np.min(d)
 d_mean = np.mean(d)
 print(d_max, d_min, d_mean)
+print('\n\n')
 
 #15. Now we want to label the values in d. First create an empty array "f" with the same shape (i.e. 2x3x5) as d using `np.empty`.
 
@@ -124,7 +135,9 @@ array([[[ 75.,  75.,  75.,  25.,  75.],
 """
 
 print(d)
+print('\n')
 print(f)
+print('\n\n')
 
 """
 #18. Bonus question: instead of using numbers (i.e. 0, 25, 50, 75, and 100), how to use string values 
@@ -138,3 +151,25 @@ array([[[ 'D',  'D',  'D',  'B',  'D'],
         [ 'B',  'D',   'A',  'D', 'D']]])
 Again, you don't need Numpy in this question.
 """
+
+condition_A = d == d_max
+condition_B = (d > d_mean) & (d < d_max)
+condition_C = d == d_mean
+condition_D = (d > d_min) & (d < d_mean)
+condition_E = d == d_min
+
+"""
+No sé si esta vale, la encontré en la la P**A BIBLIA (stackoverflow)
+"""
+
+f = f.astype('O')
+
+f[condition_A] = 'A'
+f[condition_B] = 'B'
+f[condition_C] = 'C'
+f[condition_D] = 'D'
+f[condition_E] = 'E'
+
+print(d)
+print('\n')
+print(f)
