@@ -75,12 +75,14 @@ Si la multiplicación fuese el producto matricial otro gallo cantaría. '''
 
 
 #14. Identify the max, min, and mean values in d. Assign those values to variables "d_max", "d_min", and "d_mean"
-
+d_max = d.max()
+d_min = d.min()
+d_mean = d.mean()
 
 
 
 #15. Now we want to label the values in d. First create an empty array "f" with the same shape (i.e. 2x3x5) as d using `np.empty`.
-
+f = np.empty((2,3,5))
 
 
 
@@ -93,6 +95,38 @@ Assign 100 to the corresponding value(s) in f for d_max in d.
 In the end, f should have only the following values: 0, 25, 50, 75, and 100.
 Note: you don't have to use Numpy in this question.
 """
+print("-------------------------- EJERCICIO 16 -------------------------------")
+'''
+if  d_min < d < d_mean  --->  75
+if  d = d_mean asigno   --->  50
+if  d = d_min asigno    --->   0
+if  d = d_max           ---> 100
+'''
+
+
+'''
+Vale con lo de abajo me he rayado mazo, era con lo de los masks de hoy, pero me gusta guardar mis rayadas sorry. 
+Por cierto feliz cumpleaños camarada del 97.
+
+arr = [n for arr in d for subarray in arr for n in subarray]
+f_lst = []
+for number in arr:
+        if (number > d_min) & (number < d_mean):
+                f_lst.append(75)
+        elif number == d_mean:
+                f_lst.append(50)
+        elif number == d_min:
+                f_lst.append(0)
+        elif number == d_max:
+                f_lst.append(100)
+'''
+f[(d > d_min) & (d < d_mean)] = 75
+f[(d > d_mean) & (d < d_max)] = 25
+f[d == d_mean] = 50
+f[d == d_min] = 0
+f[d == d_max ] = 100
+print(f)
+
 
 
 
@@ -117,6 +151,18 @@ array([[[ 75.,  75.,  75.,  25.,  75.],
         [ 75.,  75.,  75.,  75.,  75.],
         [ 25.,  75.,   0.,  75.,  75.]]])
 """
+print("-------------------------- EJERCICIO 17 -------------------------------")
+print(f"ESTA ES D:\n {d}\n\n")
+print(f"ESTA ES f:\n {f}")
+
+''''''
+
+
+
+
+
+
+
 
 
 """
