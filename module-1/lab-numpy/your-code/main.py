@@ -12,9 +12,13 @@ print(np.version.version)
 # Challenge: there are at least three easy ways that use numpy to generate random arrays. How many ways can you find?
 a = np.random.random( (2,3,5) )
 
-
-#or np.random.randint(1,21, size=(2,3,5)) with integers
-
+"""
+or np.random.randint(1,21, size=(2,3,5)) with integers, 
+or an uniform distribution between 2 values np.random.uniform(1,21,(2,3,5)) (between 1 and 21)
+or using a binomial distribution of the probability (ej np.random.binomial(5,0.4,(2,3,5)) with n=5 and p=0.4 )
+or a normal distibution (ej np.random.normal(10,2, (2,3,5)) with mean=10 and sigma=2  )
+(there are more probability distributions)
+"""
 #4. Print a.
 
 """
@@ -46,11 +50,13 @@ b = np.ones((5,2,3))
   [1. 1. 1. 1. 1.]]]
 """
 #7. Do a and b have the same size? How do you prove that in Python code?
-np.size(a)==np.size(b)
 """
+>>>> np.size(a)==np.size(b)
 True
+
+The size is size(a) = size(b) = 30
+
 """
-#size(a) = size(b) = 30
 
 
 #8. Are you able to add a and b? Why or why not?
@@ -64,7 +70,9 @@ c = np.transpose(b, (1,2,0) )
 
 #10. Try to add a and c. Now it should work. Assign the sum to varialbe "d". But why does it work now?
 d = a+c
-
+"""
+Now it works because the shape of a is the same as b (and hence the size of course)
+"""
 
 #11. Print a and d. Notice the difference and relation of the two array in terms of the values? Explain.
 print(a)
@@ -120,6 +128,8 @@ d_max=d.max()
 d_min=d.min()
 d_mean=d.mean()
 """
+I stored the result in the asked variables, but here I print the max, min and mean 
+
 >>>> d.max(),d.min(),d.mean()
 (1.9909812336835477, 1.0247294411770764, 1.372082870145217)
 """
@@ -163,8 +173,11 @@ array([[[ 75.,  75.,  75.,  25.,  75.],
         [ 75.,  75.,  75.,  75.,  75.],
         [ 25.,  75.,   0.,  75.,  75.]]])
 """
+#My resut:
 """
-print(f)
+The result of the print is the following:
+
+>>>print(f)
 [[[ 75  25  75  25  75]
   [ 25  75  25  25 100]
   [ 75  75  75  75  75]]
