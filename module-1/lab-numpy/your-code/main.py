@@ -3,6 +3,7 @@ import numpy as np
 
 
 #2. Print the NUMPY version and the configuration.
+print("-------------------------- EJERCICIO 2 -------------------------------")
 print(np.version.version)
 
 
@@ -13,6 +14,7 @@ a = np.random.randn(2,3,5)
 a = np.random.random((2,3,5))
 
 #4. Print a.
+print("-------------------------- EJERCICIO 4 -------------------------------")
 print(a)
 
 
@@ -22,29 +24,44 @@ b = np.ones((5,2,3))
 
 
 #6. Print b.
+print("--------------------------EJERCICIO 6-------------------------------")
 print(b)
 
 
 #7. Do a and b have the same size? How do you prove that in Python code?
-
+''' No tengo muy claro si con size se refiere efectivamente a la función size(numero de elementos) ,o a shape(dimensión). 
+Pero bueno pongo los dos, que son cortitos. Tienen el mismo número de elementos, pero distinta dimensión. '''
+print("--------------------------EJERCICIO 7-------------------------------")
+print(f"Size de a igual al de b: {a.size == b.size}")
+print(f"Shape de a igual al de b: {a.shape == b.shape}")
 
 
 
 #8. Are you able to add a and b? Why or why not?
+'''No, porque son elementos de dimensiones distintas y a diferencia del producto vectorial, la suma no genera una nueva dimensión.'''
 
 
 
 #9. Transpose b so that it has the same structure of a (i.e. become a 2x3x5 array). Assign the transposed array to varialbe "c".
-
+''' 
+Escribimos nuestra antigua posicion 0 (el 5) en el nuevo 0,
+nuestra antigua posicion 1 (el 2) en el nuevo 1 y 
+nuestra antigua posicion 2 (el 3) en el nuevo 2
+'''
+c = np.transpose(b, (1, 2, 0))
 
 
 #10. Try to add a and c. Now it should work. Assign the sum to varialbe "d". But why does it work now?
+'''Ahora se pueden sumar porque son de la misma dimension'''
+d = a+c
 
 
 
 #11. Print a and d. Notice the difference and relation of the two array in terms of the values? Explain.
-
-
+'''Se ha sumado elemento a elemento, es decir, Anxm + Cnxm. Ninguno de los elementos resultantes es mayor que 2 porque los 
+valores random estaban entre 0 y 1. '''
+print("--------------------------EJERCICIO 11-------------------------------")
+print(a,"\n"*3,d)
 
 
 #12. Multiply a and c. Assign the result to e.
