@@ -1,67 +1,87 @@
 #1. Import the NUMPY package under the name np.
-
-
+import numpy as np
+import random
 
 #2. Print the NUMPY version and the configuration.
-
+print(np.version.version)
 
 
 #3. Generate a 2x3x5 3-dimensional array with random values. Assign the array to variable "a"
 # Challenge: there are at least three easy ways that use numpy to generate random arrays. How many ways can you find?
-
-
+a=np.random.rand(2,3,5)
+#a=np.random.randint(0,100, size=(2, 3, 5))
 
 #4. Print a.
-
+print(a)
 
 
 #5. Create a 5x2x3 3-dimensional array with all values equaling 1.
 #Assign the array to variable "b"
-
+b=np.ones((5, 2, 3))
 
 
 #6. Print b.
-
+print(b)
 
 
 #7. Do a and b have the same size? How do you prove that in Python code?
-
+if a.size==b.size:
+        print (True)
+else:
+        print (False)
 
 
 
 #8. Are you able to add a and b? Why or why not?
 
-
+'''add1=np.add(a+b)
+print(add1)
+ValueError: operands could not be broadcast together with shapes (2,3,5) (5,2,3)
+It is not possible as the don't have the same size'''
 
 #9. Transpose b so that it has the same structure of a (i.e. become a 2x3x5 array). Assign the transposed array to varialbe "c".
-
-
+c= np.transpose(b, (1,2,0))
+print(c)
 
 #10. Try to add a and c. Now it should work. Assign the sum to varialbe "d". But why does it work now?
 
+d=a+c
+print(d)
 
+'''It works now because the two arrays have the same size'''
 
 #11. Print a and d. Notice the difference and relation of the two array in terms of the values? Explain.
 
+print(a)
+print(d)
 
-
-
+'''The values in a are the same as the values in d except for the 1. in d before the decimal'''
 #12. Multiply a and c. Assign the result to e.
-
+e=a*c
 
 
 #13. Does e equal to a? Why or why not?
+'''if a.all==e:
+        print(True)
+else:
+        print(False)'''
 
-
-
+'''Yes, because e equals a*c, c is the traspose array of b which is an array of ones,
+so c is also an array of ones. To obtain e we are multiplying a * c which is composed 
+of ones so we obtain the same as a'''
 
 #14. Identify the max, min, and mean values in d. Assign those values to variables "d_max", "d_min", and "d_mean"
-
-
+d_max=np.max(d)
+d_min=np.min(d)
+d_mean=np.mean(d)
+print(d_max)
+print(d_min)
+print(d_mean)
 
 
 #15. Now we want to label the values in d. First create an empty array "f" with the same shape (i.e. 2x3x5) as d using `np.empty`.
 
+f=np.empty((2,3,5))
 
 
 
@@ -75,8 +95,25 @@ In the end, f should have only the following values: 0, 25, 50, 75, and 100.
 Note: you don't have to use Numpy in this question.
 """
 
+f[d == d_min]=0
+f[(d_min<d) & (d_mean>d)]=25
+f[d==d_mean]=50
+f[(d_mean<d) & (d<d_max)]=75
+f[d==d_max]=100
 
-
+'''for out_list in d:
+        for in_list in out_list:
+                for item in in_list:
+                        if d_min<item<d_mean:
+                                item=25
+                        elif d_mean<item<d_max:
+                                item=75
+                        elif item==d_mean:
+                                item=50
+                        elif item == d_min:
+                                item=0 
+                        elif item==d_max:
+                                item=100'''
 
 """
 #17. Print d and f. Do you have your expected f?
@@ -98,7 +135,8 @@ array([[[ 75.,  75.,  75.,  25.,  75.],
         [ 75.,  75.,  75.,  75.,  75.],
         [ 25.,  75.,   0.,  75.,  75.]]])
 """
-
+print(d)
+print(f)
 
 """
 #18. Bonus question: instead of using numbers (i.e. 0, 25, 50, 75, and 100), how to use string values 
@@ -112,3 +150,26 @@ array([[[ 'D',  'D',  'D',  'B',  'D'],
         [ 'B',  'D',   'A',  'D', 'D']]])
 Again, you don't need Numpy in this question.
 """
+'''f[d==0]='A'
+f[d==25]='B'
+f[d==50]='C'
+f[d == 75]='D'
+f[d==100]='E' '''
+
+
+for lst1 in f:
+        for lst2 in lst1:
+                for value in lst2:
+                        if value==0:
+                                value=('A')
+                        if value==25:
+                                value=('B')
+                        if value==50:
+                                value=('C')
+                        if value==75:
+                                value=('D')
+                        if value==100:
+                                value=('E')
+                        
+
+print(f)
