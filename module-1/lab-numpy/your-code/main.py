@@ -1,69 +1,88 @@
 #1. Import the NUMPY package under the name np.
 
-
+import numpy as np
+import random
 
 #2. Print the NUMPY version and the configuration.
 
-
+print (np.version.version)
 
 #3. Generate a 2x3x5 3-dimensional array with random values. Assign the array to variable "a"
 # Challenge: there are at least three easy ways that use numpy to generate random arrays. How many ways can you find?
 
-
+a = np.random.rand(2,3,5) #2 arrays of 3 rows and 5 columns
 
 #4. Print a.
 
-
+print (a)
 
 #5. Create a 5x2x3 3-dimensional array with all values equaling 1.
 #Assign the array to variable "b"
 
+b = np.ones((5,2,3))
+
+#Todos los valores de ese 5x2x3 tienen que ser unos
 
 
 #6. Print b.
 
-
+print(b)
 
 #7. Do a and b have the same size? How do you prove that in Python code?
 
-
-
+if a.size == b.size:
+        print ('True')
+else:
+        print ('False')
 
 #8. Are you able to add a and b? Why or why not?
 
-
+#No, you cant add arrays with different shapes
 
 #9. Transpose b so that it has the same structure of a (i.e. become a 2x3x5 array). Assign the transposed array to varialbe "c".
 
+#Sabemos que si hacemos print(b.shape) es = 5,2,3
+
+#y print(a.shape) es = 2,3,5
+
+c = np.transpose(b,(1,2,0))
+
+#ponemos 1,2,0 porque el 2 del a pasa a la posicion1
+#el 3 del a pasa a la posicion 2 y el 5 del a pasa a la posicion 0
 
 
 #10. Try to add a and c. Now it should work. Assign the sum to varialbe "d". But why does it work now?
 
-
+d = a + c
+#Now it works because a and c have the same shape, and therefore can be added
 
 #11. Print a and d. Notice the difference and relation of the two array in terms of the values? Explain.
 
-
-
+print(a,'\n')
+print(d)
+#regarding similarities, both a and d have the same shape, but as to their
+#differences the values of b are the values of a +1
 
 #12. Multiply a and c. Assign the result to e.
 
-
+e = a*c 
 
 #13. Does e equal to a? Why or why not?
 
-
-
+print(e,'\n')
+print(a,'\n')
+#Yes, e equal to a beacuse when you multiply a number by 1 (value of the array c)
+#The array remains the same
 
 #14. Identify the max, min, and mean values in d. Assign those values to variables "d_max", "d_min", and "d_mean"
-
-
-
+d_max = np.amax(d)
+d_min = np.amin(d)
+d_mean = np.mean(d)
 
 #15. Now we want to label the values in d. First create an empty array "f" with the same shape (i.e. 2x3x5) as d using `np.empty`.
 
-
-
+f = np.empty([2,3,5])
+print (f)
 
 """
 #16. Populate the values in f. For each value in d, if it's larger than d_min but smaller than d_mean, assign 25 to the corresponding value in f.
@@ -75,7 +94,23 @@ In the end, f should have only the following values: 0, 25, 50, 75, and 100.
 Note: you don't have to use Numpy in this question.
 """
 
+#f = [[[[25 if d_mean > ITEM > d_min else 75 if d_max > ITEM > d_mean else 50 if ITEM == d_mean else 0 if ITEM == d_min else 100 for ITEM == d_max] for ITEM in in_list] for in_list in out_list] for out_list in d]
 
+for out_list in d:
+        for in_list in out_list:
+                for ITEM in in_list:
+                        if d_mean > ITEM > d_min:
+                                ITEM = 25
+                        elif d_max > ITEM > d_mean:
+                                ITEM = 75
+                        elif ITEM == d_mean:
+                                ITEM = 50
+                        elif ITEM == d_min:
+                                ITEM = 0
+                        elif ITEM == d_max:
+                                ITEM = 100
+        
+  
 
 
 """
@@ -98,6 +133,10 @@ array([[[ 75.,  75.,  75.,  25.,  75.],
         [ 75.,  75.,  75.,  75.,  75.],
         [ 25.,  75.,   0.,  75.,  75.]]])
 """
+print('---------------------------------------')
+print(d)
+print(f)
+
 
 
 """
@@ -112,3 +151,17 @@ array([[[ 'D',  'D',  'D',  'B',  'D'],
         [ 'B',  'D',   'A',  'D', 'D']]])
 Again, you don't need Numpy in this question.
 """
+
+for out_list in d:
+        for in_list in out_list:
+                for ITEM in in_list:
+                        if d_mean > ITEM > d_min:
+                                ITEM = 'B'
+                        elif d_max > ITEM > d_mean:
+                                ITEM = 'D'
+                        elif ITEM == d_mean:
+                                ITEM = 'C'
+                        elif ITEM == d_min:
+                                ITEM = 'A'
+                        elif ITEM == d_max:
+                                ITEM = 'E'
