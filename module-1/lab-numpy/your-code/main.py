@@ -67,13 +67,9 @@ d_max = d.max()
 d_min = d.min()
 d_mean = d.mean()
 
-print(d_max, d_min, d_mean)
-
 #15. Now we want to label the values in d. First create an empty array "f" with the same shape (i.e. 2x3x5) as d using `np.empty`.
 
-
-
-
+f = np.empty((2,3,5))
 """
 #16. Populate the values in f. For each value in d, if it's larger than d_min but smaller than d_mean, assign 25 to the corresponding value in f.
 If a value in d is larger than d_mean but smaller than d_max, assign 75 to the corresponding value in f.
@@ -83,8 +79,20 @@ Assign 100 to the corresponding value(s) in f for d_max in d.
 In the end, f should have only the following values: 0, 25, 50, 75, and 100.
 Note: you don't have to use Numpy in this question.
 """
+for x in range(f.shape[0]):
+        for y in range (f.shape[1]):
+                for z in range (f.shape[2]):
 
-
+                        if d[x][y][z] == d_min:
+                                f[x][y][z] = 0
+                        elif d[x][y][z] == d_max:
+                                f[x][y][z]= 100
+                        elif d[x][y][z] == d_mean:
+                                f[x][y][z] = 50
+                        elif d_min < d[x][y][z] < d_mean:
+                               f[x][y][z] = 25
+                        else:
+                                f[x][y][z] = 75
 
 
 """
@@ -107,7 +115,10 @@ array([[[ 75.,  75.,  75.,  25.,  75.],
         [ 75.,  75.,  75.,  75.,  75.],
         [ 25.,  75.,   0.,  75.,  75.]]])
 """
-
+print("________________________________________________________________")
+print(d)
+print("________________________________________________________________")
+print(f)
 
 """
 #18. Bonus question: instead of using numbers (i.e. 0, 25, 50, 75, and 100), how to use string values 
