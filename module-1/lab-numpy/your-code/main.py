@@ -125,7 +125,6 @@ f[(d > d_mean) & (d < d_max)] = 25
 f[d == d_mean] = 50
 f[d == d_min] = 0
 f[d == d_max ] = 100
-print(f)
 
 
 
@@ -152,17 +151,10 @@ array([[[ 75.,  75.,  75.,  25.,  75.],
         [ 25.,  75.,   0.,  75.,  75.]]])
 """
 print("-------------------------- EJERCICIO 17 -------------------------------")
-print(f"ESTA ES D:\n {d}\n\n")
+print(f"ESTA ES d:\n {d}\n\n")
 print(f"ESTA ES f:\n {f}")
 
 ''''''
-
-
-
-
-
-
-
 
 
 """
@@ -177,3 +169,15 @@ array([[[ 'D',  'D',  'D',  'B',  'D'],
         [ 'B',  'D',   'A',  'D', 'D']]])
 Again, you don't need Numpy in this question.
 """
+print("-------------------------- BONUS -------------------------------")
+#Se convierte f en un objeto y ya le ponemos lo que queramos
+f = np.array(f,dtype=object)
+
+
+f[(d > d_min) & (d < d_mean)] = 'A'
+f[(d > d_mean) & (d < d_max)] = 'B'
+f[d == d_mean] = 'C'
+f[d == d_min] = 'D'
+f[d == d_max ] = 'E'
+
+print(f)
