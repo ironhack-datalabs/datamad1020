@@ -77,6 +77,7 @@ Eso significa que como no tiene la misma medida no se puede en este caso sumar (
 #9. Transpose b so that it has the same structure of a (i.e. become a 2x3x5 array). Assign the transposed array to varialbe "c".
 
 
+
 c = (np.transpose(b,(1,2,0)))
 
 """
