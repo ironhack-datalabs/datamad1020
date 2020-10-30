@@ -11,6 +11,7 @@ print(my_listComprehension)
 import re
 import os
 import random
+import sys
 
 #1. Calculate the square number of the first 20 numbers. Use square as the name of the list.
 # Remember to use list comprehensions and to print your results
@@ -116,18 +117,27 @@ print(floats)
 #14. Handle the exception thrown by the code below by using try and except blocks. 
 
 
-#for i in ['a','b','c']:
- #   print i**2
+for i in ['a','b','c']:
+    try:
+        i = float(i)
+        print(i**2)
+    except:
+        print('That is not a number')
 
 
 #15. Handle the exception thrown by the code below by using try and except blocks. 
 #Then use a finally block to print 'All Done.'
 # Check in provided resources the type of error you may use. 
 
-#x = 5
-#y = 0
+x = 5
+y = 0
 
-#z = x/y
+try:
+    z = x/y
+except ZeroDivisionError:
+    print('You cannot divide by zero')
+finally:
+    print('All Done')
 
 
 
@@ -135,13 +145,26 @@ print(floats)
 #16. Handle the exception thrown by the code below by using try and except blocks. 
 # Check in provided resources the type of error you may use. 
 
-#abc=[10,20,20]
-#print(abc[3])
+abc=[10,20,20]
+
+try:
+    print(abc[3])
+except IndexError as e:
+    print(f"{type(e)}: list index out of range")
 
 
 #17. Handle at least two kind of different exceptions when dividing a couple of numbers provided by the user. 
 # Hint: take a look on python input function. 
 # Check in provided resources the type of error you may use. 
+
+try:
+    a = float(input("Enter a number: "))
+    b = float(input("Enter a number different to zero: "))
+    print(a/b)
+except ZeroDivisionError as z:
+    print(f"{type(z)}: I cannot divide a number by zero!!")
+except ValueError as v:
+    print(f"{type(v)}: That is not a number...") 
 
 
 
@@ -149,8 +172,11 @@ print(floats)
 #18. Handle the exception thrown by the code below by using try and except blocks. 
 # Check in provided resources the type of error you may use. 
 
-#f = open('testfile','r')
-#f.write('Test write this')
+try:
+    f = open('testfile','r')
+    f.write('Test write this')
+except FileNotFoundError as f:
+    print(f"{type(f)}: I cannot find that file...")
 
 
 
@@ -158,11 +184,16 @@ print(floats)
 #19. Handle the exceptions that can be thrown by the code below using try and except blocks. 
 #Hint: the file could not exist and the data could not be convertable to int
 
-#fp = open('myfile.txt')
- #   line = f.readline()
- #   i = int(s.strip())
-
-
+try:
+    fp = open('myfile.txt')
+    line = f.readline()
+    i = int(l.strip())
+except FileNotFoundError as f:
+    print(f"{type(f)}: I cannot find that file...")
+except NameError as n:
+    print(f"{type(n)}: There is a variable not defined")
+except ValueError as v:
+    print(f"{type(v)}: Cannot convert the elements to numeric")
 
 
 #20. The following function can only run on a Linux system. 
@@ -170,9 +201,12 @@ print(floats)
 # Handle this exception using try and except blocks. 
 # You will probably need to import sys 
 
-#def linux_interaction():
- #   assert ('linux' in sys.platform), "Function can only run on Linux systems."
- #   print('Doing something.')
+def linux_interaction():
+    try:
+        assert('linux' in sys.platform) 
+        print('Doing something.')
+    except AssertionError as a:
+        print(f"{type(a)}: This function can only run on Linux systems. Yours is a {sys.platform} system")
 
 
 # Bonus Questions:
