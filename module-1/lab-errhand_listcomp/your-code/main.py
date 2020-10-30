@@ -112,7 +112,7 @@ list_of_lists = [['40', '20', '10', '30'], ['20', '20', '20', '20', '20', '30', 
 ['100', '100', '100', '100']]
 
 #floats = [[ ] for lst in  list_of_lists ]
-
+floats = [[float(el) for el in lst] for lst in list_of_lists]
 
 #14. Handle the exception thrown by the code below by using try and except blocks. 
 
