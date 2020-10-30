@@ -84,7 +84,7 @@ print(consonants)
 # You will probably need to import os library and some of its modules. You will need to make some online research.
 # Remember to use list comprehensions and to print your results.
 
-files = [x for x in os.walk('/Users/eduardooportoalonso/Documents/Cursos/Ironhack/datamad1020/datamad1020')]
+files = [x for x in os.walk('../datamad1020')]
 print(files)
 
 #11. Create 4 lists of 10 random numbers between 0 and 100 each. Use random_lists as the name of the list. 
