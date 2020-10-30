@@ -156,25 +156,41 @@ except IndexError:
 # Check in provided resources the type of error you may use. 
 
 
+try:
+    n1=float(input("Choose one positive number for the dividend: "))
+    n2=float(input("Choose another positive number for the divisor:  "))
+    if (n1<0) or (n2<0):
+        raise TypeError
+    divis = n1 / n2
+    print(divis)
+except ZeroDivisionError:
+    print("Why would you want to divide by 0? You must be an evil being.")
+except TypeError:
+    print("POSITIVE NUMBERS! >:(")
+except ValueError:
+    print("No, no, no... you must divide NUMBERS!")
 
 
 #18. Handle the exception thrown by the code below by using try and except blocks. 
 # Check in provided resources the type of error you may use. 
-
-f = open('testfile','r')
-f.write('Test write this')
-
+try:
+    f = open('testfile','r')
+    f.write('Test write this')
+except FileNotFoundError:
+    print("The file or directory is requested but doesn’t exist! Solve this, punk.")
+except IOError: #MacOS
+    print("The file or directory is requested but doesn’t exist! Solve this, punk.")
 
 
 
 #19. Handle the exceptions that can be thrown by the code below using try and except blocks. 
 #Hint: the file could not exist and the data could not be convertable to int
-
-fp = open('myfile.txt')
-    line = f.readline()
-    i = int(s.strip())
-
-
+try:
+    fp = open('myfile.txt')
+        line = f.readline()
+        i = int(s.strip())
+except:
+    print("no")
 
 
 #20. The following function can only run on a Linux system. 
