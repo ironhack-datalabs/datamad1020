@@ -7,10 +7,11 @@ my_listComprehension = [1/egg for egg in eggs]
 print(my_listComprehension)
 
 #Insert here the module/library import statements 
-import numpy as bp
+import numpy as np
 import string
 import random 
-
+import sys 
+import os
 #1. Calculate the square number of the first 20 numbers. Use square as the name of the list.
 # Remember to use list comprehensions and to print your results
 
@@ -207,7 +208,11 @@ except NameError:
 def linux_interaction():
     assert ('linux' in sys.platform), "Function can only run on Linux systems."
     print('Doing something.')
-
+     
+try:
+    linux_interaction()
+except AssertionError:
+    print("You don't have a linux plataform, so this function is forbiden to you!")
 
 # Bonus Questions:
 
