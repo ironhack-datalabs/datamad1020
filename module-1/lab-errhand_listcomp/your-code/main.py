@@ -246,7 +246,20 @@ results = [x for x in range(1,1001) if ((x%2==0) | (x%3==0) | (x%4==0) |
 # You have the following user inputs and the Num_of_sections can not be less than 2.
 # Hint: Create a class derived from the pre-defined Exception class in Python
 
+class SectionNumberError(Exception):
+    pass
+
+
+class TotalMarksError(Exception):
+    pass
+
+
 Total_Marks = int(input("Enter Total Marks Scored: ")) 
+#I also added that should be a positive integer
+if Total_Marks<0:
+    raise TotalMarksError("Total marks should be a positive integer")
 Num_of_Sections = int(input("Enter Num of Sections: "))
+if Num_of_Sections<2:
+    raise SectionNumberError("Number of sections can not be less than 2")
 
 
