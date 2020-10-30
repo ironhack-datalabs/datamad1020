@@ -8,7 +8,7 @@ print(my_listComprehension)
 
 #Insert here the module/library import statements 
 import numpy as bp
-
+import string
 
 
 #1. Calculate the square number of the first 20 numbers. Use square as the name of the list.
@@ -57,15 +57,15 @@ divisible_by_seven = [x for x in range(1,1001) if x%7==0]
 # You can use the following test string but feel free to modify at your convenience
 
 teststring = 'Find all of the words in a string that are monosyllabic'
-
-
+non_vowels = [letter for letter in teststring if letter.lower() not in ["a","e","i","o","u"]]
 
 
 #8. Find the capital letters (and not white space) in the sentence 'The Quick Brown Fox Jumped Over The Lazy Dog'. 
 # Use capital_letters as the name of the list.  
 # Remember to use list comprehensions and to print your results
 
-
+teststring = 'The Quick Brown Fox Jumped Over The Lazy Dog'
+capital_letters = [letter for letter in teststring if letter in string.ascii_uppercase]
 
 
 #9. Find all the consonants in the sentence 'The quick brown fox jumped over the lazy dog'.
