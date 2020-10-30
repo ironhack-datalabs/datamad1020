@@ -187,11 +187,17 @@ except IOError: #MacOS
 #Hint: the file could not exist and the data could not be convertable to int
 try:
     fp = open('myfile.txt')
-        line = f.readline()
-        i = int(s.strip())
-except:
-    print("no")
+    line = f.readline()
+    i = int(s.strip())
 
+except FileNotFoundError:
+    print("The file or directory is requested but doesn’t exist! Solve this, punk.")
+except ValueError:
+    print("The stuff you want to convert to int is impossible!")    
+except UnicodeDecodeError:
+    print("That's some weird characters you want me to work with...")
+except NameError:
+    print("The name of the variables are wrong. Check your code...")
 
 #20. The following function can only run on a Linux system. 
 # The assert in this function will throw an exception if you call it on an operating system other than Linux. 
