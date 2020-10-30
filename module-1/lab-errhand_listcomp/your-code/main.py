@@ -35,18 +35,21 @@ print(sqrt)
 # Remember to use list comprehensions and to print your results
 
 
+#Different forms of doing the same
+my_list = [-x for x in range(10,-1,-1)]
+my_list = [x for x in range(-10,1)]
 
 
 #5. Find the odd numbers from 1-100. Use odds as the name of the list. 
 # Remember to use list comprehensions and to print your results
 
-
+odds = [x for x in range(1,101) if x%2==1]
 
 
 #6. Find all of the numbers from 1-1000 that are divisible by 7. Use divisible_by_seven as the name of the list.
 # Remember to use list comprehensions and to print your results
 
-
+divisible_by_seven = [x for x in range(1,1001) if x%7==0]
 
 
 #7. Remove all of the vowels in a string. Hint: make a list of the non-vowels. Use non_vowels as the name of the list.
