@@ -9,7 +9,7 @@ print(my_listComprehension)
 #Insert here the module/library import statements 
 import numpy as bp
 import string
-
+import random 
 
 #1. Calculate the square number of the first 20 numbers. Use square as the name of the list.
 # Remember to use list comprehensions and to print your results
@@ -65,28 +65,36 @@ non_vowels = [letter for letter in teststring if letter.lower() not in ["a","e",
 # Remember to use list comprehensions and to print your results
 
 teststring = 'The Quick Brown Fox Jumped Over The Lazy Dog'
-capital_letters = [letter for letter in teststring if letter in string.ascii_uppercase]
+#As we must find all the capital letters, I understand that I have to list all the unique capital letters
+#so I used a set. It is not the same as remove all lowercase letters
+capital_letters = {letter for letter in teststring if letter in string.ascii_uppercase}
 
 
 #9. Find all the consonants in the sentence 'The quick brown fox jumped over the lazy dog'.
 # Use consonants as the name of the list.
 # Remember to use list comprehensions and to print your results.
 
-
-
+teststring = 'The Quick Brown Fox Jumped Over The Lazy Dog'
+#As we must find all the consonants, I used a set, as this is not as ex. 7, to remove the vowels. We
+#must create a set with all the different consonants.
+consonants = {letter.lower() for letter in teststring if letter.lower() in set(string.ascii_lowercase) - {"a","e","i","o","u"}}
 
 
 #10. Find the folders you have in your madrid-oct-2018 local repo. Use files as name of the list.  
 # You will probably need to import os library and some of its modules. You will need to make some online research.
 # Remember to use list comprehensions and to print your results.
 
+#The name of the folder I assumed that is "datamad1020", but the name is not necesary. I assumed as well that
+#the location is the equivalent as "datamad1020", and my cwd obtained with os.getcwd() is
+#/home/ordovas/IRONHACK/labs/datamad1020/module-1/lab-errhand_listcomp/your-code'
+files = os.listdir(path="../../../")
 
 
 #11. Create 4 lists of 10 random numbers between 0 and 100 each. Use random_lists as the name of the list. 
 #You will probably need to import random module
 # Remember to use list comprehensions and to print your results
 
-
+random_lists = [ [random.randint(0, 100) for _ in range(10)] for _ in range(4) ]
 
 
 #12. Flatten the following list of lists. Use flatten_list as the name of the output.
@@ -94,7 +102,7 @@ capital_letters = [letter for letter in teststring if letter in string.ascii_upp
 
 list_of_lists = [[1,2,3],[4,5,6],[7,8,9]]
 
-
+flatten_list = [el for lst in list_of_lists for el in lst]
 
 #13. Convert the numbers of the following nested list to floats. Use floats as the name of the list. 
 # Remember to use list comprehensions and to print your results.
@@ -103,14 +111,17 @@ list_of_lists = [['40', '20', '10', '30'], ['20', '20', '20', '20', '20', '30', 
 ['30', '20', '30', '50', '10', '30', '20', '20', '20'], ['100', '100'], ['100', '100', '100', '100', '100'], \
 ['100', '100', '100', '100']]
 
-
+#floats = [[ ] for lst in  list_of_lists ]
 
 
 #14. Handle the exception thrown by the code below by using try and except blocks. 
 
 
 for i in ['a','b','c']:
-    print i**2
+    try:
+        print(i**2)
+    except:
+        print("You can't compute the square number of a str!")
 
 
 #15. Handle the exception thrown by the code below by using try and except blocks. 
@@ -120,8 +131,12 @@ for i in ['a','b','c']:
 x = 5
 y = 0
 
-z = x/y
-
+try:
+    z = x/y
+except:
+    print("I'm not going to divide anything by 0...")
+finally:
+    print("All Done.")
 
 
 
@@ -129,9 +144,13 @@ z = x/y
 # Check in provided resources the type of error you may use. 
 
 abc=[10,20,20]
-print(abc[3])
 
 
+try:
+   print(abc[3])
+except IndexError:
+    print("Wrong index... Remember that the first index in python is 0!")
+    
 #17. Handle at least two kind of different exceptions when dividing a couple of numbers provided by the user. 
 # Hint: take a look on python input function. 
 # Check in provided resources the type of error you may use. 
