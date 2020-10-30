@@ -142,24 +142,34 @@ finally:
 # Check in provided resources the type of error you may use. 
 
 abc=[10,20,20]
-print(abc[3])
+try:
+    print(abc[3])
+except IndexError:
+    print("wrong: IndexError")
 
 
 #17. Handle at least two kind of different exceptions when dividing a couple of numbers provided by the user. 
 # Hint: take a look on python input function. 
 # Check in provided resources the type of error you may use. 
 
-
+try:
+    dividendo = int(input("dame un dividendo"))
+    divisor = int(input("dame un divisor"))
+    cociente = dividendo/divisor
+    print(float(cociente))
+except ZeroDivisionError:
+    print("wrong: zero division error")
+except Exception as error:
+    print(error)
 
 
 #18. Handle the exception thrown by the code below by using try and except blocks. 
 # Check in provided resources the type of error you may use. 
-
-f = open('testfile','r')
-f.write('Test write this')
-
-
-
+try:
+    f = open('testfile', 'r')
+    f.write('Test write this')
+except IOError:
+    print("wrong: IOError")
 
 #19. Handle the exceptions that can be thrown by the code below using try and except blocks. 
 #Hint: the file could not exist and the data could not be convertable to int
