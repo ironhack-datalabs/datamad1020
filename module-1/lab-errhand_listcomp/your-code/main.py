@@ -8,8 +8,8 @@ print(my_listComprehension)
 
 #Insert here the module/library import statements 
 import re
-import os
-
+import os,sys
+import random
 
 #1. Calculate the square number of the first 20 numbers. Use square as the name of the list.
 # Remember to use list comprehensions and to print your results
@@ -103,44 +103,56 @@ print(capital_letters)
 # You will probably need to import os library and some of its modules. You will need to make some online research.
 # Remember to use list comprehensions and to print your results.
 print(f"------------------------------------- EJERCICIO 10 -------------------------------------")
-files=[f for f in os.listdir(path='/c/users/ux533f/desktop/ironhack/datamad1020')]
+path = 'c:/users/ux533f/desktop/ironhack/datamad1020'
+files=[f for f in os.listdir(path)]  
+print(files) 
 
-'''
+#string = os.path.relpath(path, start) 
+
 #11. Create 4 lists of 10 random numbers between 0 and 100 each. Use random_lists as the name of the list. 
 #You will probably need to import random module
 # Remember to use list comprehensions and to print your results
+print(f"------------------------------------- EJERCICIO 11 -------------------------------------")
+random_lists = [random.sample(range(1,101),10) for n in range(4)]
+print (random_lists)
 
 
 
 
 #12. Flatten the following list of lists. Use flatten_list as the name of the output.
 # Remember to use list comprehensions and to print your results
-
+print(f"------------------------------------- EJERCICIO 12 -------------------------------------")
 list_of_lists = [[1,2,3],[4,5,6],[7,8,9]]
-
-
+flatten_list = [number for lst in list_of_lists for number in lst]
+print(flatten_list)
 
 #13. Convert the numbers of the following nested list to floats. Use floats as the name of the list. 
 # Remember to use list comprehensions and to print your results.
+print(f"------------------------------------- EJERCICIO 13 -------------------------------------")
 
 list_of_lists = [['40', '20', '10', '30'], ['20', '20', '20', '20', '20', '30', '20'], \
 ['30', '20', '30', '50', '10', '30', '20', '20', '20'], ['100', '100'], ['100', '100', '100', '100', '100'], \
 ['100', '100', '100', '100']]
 
+floats = [float(number) for lst in list_of_lists for number in lst] 
 
+print(floats)
 
 
 #14. Handle the exception thrown by the code below by using try and except blocks. 
-
+print(f"------------------------------------- EJERCICIO 14 -------------------------------------")
 
 for i in ['a','b','c']:
-    print i**2
+    try:
+        print (i**2)
+    except Exception as e:
+        print ("No se puede elevar un caracter al cuadrado")
 
-
+'''
 #15. Handle the exception thrown by the code below by using try and except blocks. 
 #Then use a finally block to print 'All Done.'
 # Check in provided resources the type of error you may use. 
-
+print(f"------------------------------------- EJERCICIO 15 -------------------------------------")
 x = 5
 y = 0
 
@@ -151,7 +163,7 @@ z = x/y
 
 #16. Handle the exception thrown by the code below by using try and except blocks. 
 # Check in provided resources the type of error you may use. 
-
+print(f"------------------------------------- EJERCICIO 16 -------------------------------------")
 abc=[10,20,20]
 print(abc[3])
 
@@ -159,13 +171,13 @@ print(abc[3])
 #17. Handle at least two kind of different exceptions when dividing a couple of numbers provided by the user. 
 # Hint: take a look on python input function. 
 # Check in provided resources the type of error you may use. 
-
+print(f"------------------------------------- EJERCICIO 17 -------------------------------------")
 
 
 
 #18. Handle the exception thrown by the code below by using try and except blocks. 
 # Check in provided resources the type of error you may use. 
-
+print(f"------------------------------------- EJERCICIO 18 -------------------------------------")
 f = open('testfile','r')
 f.write('Test write this')
 
@@ -174,7 +186,7 @@ f.write('Test write this')
 
 #19. Handle the exceptions that can be thrown by the code below using try and except blocks. 
 #Hint: the file could not exist and the data could not be convertable to int
-
+print(f"------------------------------------- EJERCICIO 19 -------------------------------------")
 fp = open('myfile.txt')
     line = f.readline()
     i = int(s.strip())
@@ -186,7 +198,7 @@ fp = open('myfile.txt')
 # The assert in this function will throw an exception if you call it on an operating system other than Linux. 
 # Handle this exception using try and except blocks. 
 # You will probably need to import sys 
-
+print(f"------------------------------------- EJERCICIO 20 -------------------------------------")
 def linux_interaction():
     assert ('linux' in sys.platform), "Function can only run on Linux systems."
     print('Doing something.')
