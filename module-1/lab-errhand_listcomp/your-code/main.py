@@ -15,7 +15,7 @@ import string
 import os
 import random
 import sys
-
+import re
 #1. Calculate the square number of the first 20 numbers. Use square as the name of the list.
 # Remember to use list comprehensions and to print your results
 numbers= list(range(1, 200))
@@ -72,19 +72,15 @@ non_vowels=[letter for letter in teststring if letter not in ["a","e","i","o","u
 
 print(non_vowels)
 '''
-####8. Find the capital letters (and not white space) in the sentence 'The Quick Brown Fox Jumped Over The Lazy Dog'. 
+#8. Find the capital letters (and not white space) in the sentence 'The Quick Brown Fox Jumped Over The Lazy Dog'. 
 # Use capital_letters as the name of the list.  
 # Remember to use list comprehensions and to print your results
-'''string='The Quick Brown Fox Jumped Over The Lazy Dog'
-
-for word in string:
-    for letter in word:
-        if letter in list(string.ascii_uppercase):
-            capital_letters.append(letter)    
 '''
-#capital_letters=[letter for word in string for letter in word if letter in list(string.ascii_uppercase)]
-#print(capital_letters)
+string='The Quick Brown Fox Jumped Over The Lazy Dog'
 
+capital_letter=re.findall(r"[A-Z]", string)
+print(capital_letter)
+'''
 
 #9. Find all the consonants in the sentence 'The quick brown fox jumped over the lazy dog'.
 # Use consonants as the name of the list.
@@ -103,7 +99,7 @@ print(os.getcwd())
 files=os.listdir(path="../../../")
 print(files)
 '''
-####11. Create 4 lists of 10 random numbers between 0 and 100 each. Use random_lists as the name of the list. 
+#11. Create 4 lists of 10 random numbers between 0 and 100 each. Use random_lists as the name of the list. 
 #You will probably need to import random module
 # Remember to use list comprehensions and to print your results
 '''
@@ -121,6 +117,10 @@ for i in range(0,10):
     number = random.randint(1,101)
     randomlist4.append(number)
 random_lists=[randomlist1, randomlist2, randomlist3, randomlist4]
+print(random_lists)
+'''
+'''
+random_lists=[i for i in random.randint(1,101,10)]
 print(random_lists)
 '''
 '''
@@ -260,8 +260,10 @@ integers(number)
 
 # 22. Find all of the numbers from 1-1000 that are divisible by any single digit besides 1 (2-9). 
 # Use results as the name of the list 
-
-
+'''
+for numbers in range(1,1000):
+    if numbers%
+'''
 
 
 # 23. Define a customised exception to handle not accepted values. 
