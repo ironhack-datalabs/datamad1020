@@ -7,59 +7,79 @@ my_listComprehension = [1/egg for egg in eggs]
 print(my_listComprehension)
 
 #Insert here the module/library import statements 
-
-
+import re
+import os
 
 
 #1. Calculate the square number of the first 20 numbers. Use square as the name of the list.
 # Remember to use list comprehensions and to print your results
-
-
+print(f"------------------------------------- EJERCICIO 1 -------------------------------------")
+square = [n**2 for n in range(1,21)]
+print(f"n^2 = {square}")
 
 
 #2. Calculate the first 50 power of two. Use power_of_two as the name of the list.
 # Remember to use list comprehensions and to print your results
-
+print(f"------------------------------------- EJERCICIO 2 -------------------------------------")
+power_of_two = [2**e for e in range(1,51)]
+print(f"Power of two = {power_of_two}")
 
 
 
 #3. Calculate the square root of the first 100 numbers. Use sqrt as the name of the list.
 # You will probably need to install math library with pip and import it in this file.  
 # Remember to use list comprehensions and to print your results
+print(f"------------------------------------- EJERCICIO 3 -------------------------------------")
+sqrt = [num**0.5 for num in range(1,101)]
+print(f"x^2 = {sqrt}")
 
 
 
 
 #4. Create this list [-10,-9,-8,-7,-6,-5,-4,-3,-2,-1,0]. Use my_list as the name of the list.
 # Remember to use list comprehensions and to print your results
-
+print(f"------------------------------------- EJERCICIO 4 -------------------------------------")
+my_list = [n for n in range(-10,1)]
+print(f"my_list = {my_list}")
 
 
 
 #5. Find the odd numbers from 1-100. Use odds as the name of the list. 
 # Remember to use list comprehensions and to print your results
-
+print(f"------------------------------------- EJERCICIO 5 -------------------------------------")
+odds = [n for n in range(1,100) if n%2]
+print(f"odds = {odds}")
 
 
 
 #6. Find all of the numbers from 1-1000 that are divisible by 7. Use divisible_by_seven as the name of the list.
 # Remember to use list comprehensions and to print your results
-
+print(f"------------------------------------- EJERCICIO 6 -------------------------------------")
+divisible_by_seven = [n for n in range(1,1001) if not n%7]
+print(f"divisible_by_seven = {divisible_by_seven}")
 
 
 
 #7. Remove all of the vowels in a string. Hint: make a list of the non-vowels. Use non_vowels as the name of the list.
 # Remember to use list comprehensions and to print your results
 # You can use the following test string but feel free to modify at your convenience
-
+print(f"------------------------------------- EJERCICIO 7 -------------------------------------")
 teststring = 'Find all of the words in a string that are monosyllabic'
-
-
+vowels = 'aeiouAEIOU'
+non_vowels_list = [n for n in teststring if n not in vowels]
+non_vowels = ''.join(non_vowels_list)
+print(non_vowels)
 
 
 #8. Find the capital letters (and not white space) in the sentence 'The Quick Brown Fox Jumped Over The Lazy Dog'. 
 # Use capital_letters as the name of the list.  
 # Remember to use list comprehensions and to print your results
+print(f"------------------------------------- EJERCICIO 8 -------------------------------------")
+teststring = 'Find all of the words in a string that are monosyllabic'
+vowels = 'aeiouAEIOU'
+non_vowels_list = [n for n in teststring if n not in vowels]
+non_vowels = ''.join(non_vowels_list)
+print(non_vowels)
 
 
 
@@ -67,17 +87,25 @@ teststring = 'Find all of the words in a string that are monosyllabic'
 #9. Find all the consonants in the sentence 'The quick brown fox jumped over the lazy dog'.
 # Use consonants as the name of the list.
 # Remember to use list comprehensions and to print your results.
+print(f"------------------------------------- EJERCICIO 9 -------------------------------------")
+string = 'The Quick Brown Fox Jumped Over The Lazy Dog'
+capital_letters = [n for n in string if n in 'ABCDEFGHIJKLMNOPQRSTUVWXYZ']
+print(capital_letters)
 
-
+print(f"------------------------------------- EJERCICIO 9.1 -------------------------------------")
+string = 'The Quick Brown Fox Jumped Over The Lazy Dog'
+capital_letters = re.findall(r"[A-Z]", string)
+print(capital_letters)
 
 
 
 #10. Find the folders you have in your madrid-oct-2018 local repo. Use files as name of the list.  
 # You will probably need to import os library and some of its modules. You will need to make some online research.
 # Remember to use list comprehensions and to print your results.
+print(f"------------------------------------- EJERCICIO 10 -------------------------------------")
+files=[f for f in os.listdir(path='/c/users/ux533f/desktop/ironhack/datamad1020')]
 
-
-
+'''
 #11. Create 4 lists of 10 random numbers between 0 and 100 each. Use random_lists as the name of the list. 
 #You will probably need to import random module
 # Remember to use list comprehensions and to print your results
@@ -189,3 +217,4 @@ Total_Marks = int(input("Enter Total Marks Scored: "))
 Num_of_Sections = int(input("Enter Num of Sections: "))
 
 
+'''
