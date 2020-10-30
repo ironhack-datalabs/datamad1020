@@ -222,13 +222,24 @@ except AssertionError:
 # Hint: we need to continually keep checking until we get an integer.
 # Use a while loop with a try,except, else block to account for incorrect inputs.
 
-
+def sqrt_input():
+    while True:
+        try:
+            num = float(input("Enter an integer: "))
+            if (num % 1) == 0:
+                break
+            print("You didn't type an integer :(")
+        except ValueError:
+            print("Invalid input, pelease don't annoy me and enter an integer")
+    return np.sqrt(num)
 
 
 # 22. Find all of the numbers from 1-1000 that are divisible by any single digit besides 1 (2-9). 
 # Use results as the name of the list 
 
-
+results = [x for x in range(1,1001) if ((x%2==0) | (x%3==0) | (x%4==0) | 
+                            (x%5==0) | (x%6==0) | (x%7==0) | 
+                            (x%8==0) | (x%9==0)) | (x==1)]
 
 
 # 23. Define a customised exception to handle not accepted values. 
