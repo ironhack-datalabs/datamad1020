@@ -7,13 +7,13 @@ my_listComprehension = [1/egg for egg in eggs]
 print(my_listComprehension)
 
 #Insert here the module/library import statements 
-
+import math
 
 
 
 #1. Calculate the square number of the first 20 numbers. Use square as the name of the list.
 # Remember to use list comprehensions and to print your results
-
+cubes = [n**3 for n in range(1,16)]
 
 
 
@@ -105,8 +105,8 @@ list_of_lists = [['40', '20', '10', '30'], ['20', '20', '20', '20', '20', '30', 
 #14. Handle the exception thrown by the code below by using try and except blocks. 
 
 
-for i in ['a','b','c']:
-    print i**2
+#for i in ['a','b','c']:
+ #   print i**2
 
 
 #15. Handle the exception thrown by the code below by using try and except blocks. 
