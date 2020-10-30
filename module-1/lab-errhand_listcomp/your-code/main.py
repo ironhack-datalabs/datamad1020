@@ -217,20 +217,40 @@ def linux_interaction():
 # Hint: we need to continually keep checking until we get an integer.
 # Use a while loop with a try,except, else block to account for incorrect inputs.
 
-
+def squarer():
+    while True:
+        num = input("Give me an integer: ")
+        try:
+            num = int(num)
+            return num**2
+        except ValueError:
+            print('That is not an integer!')
 
 
 # 22. Find all of the numbers from 1-1000 that are divisible by any single digit besides 1 (2-9). 
 # Use results as the name of the list 
 
-
+results = set([x for x in range(1,1001) for d in range(2,10) if x%d == 0])
 
 
 # 23. Define a customised exception to handle not accepted values. 
 # You have the following user inputs and the Num_of_sections can not be less than 2.
 # Hint: Create a class derived from the pre-defined Exception class in Python
 
-#Total_Marks = int(input("Enter Total Marks Scored: ")) 
-#Num_of_Sections = int(input("Enter Num of Sections: "))
+class SectionsError(Exception):
+    def __init__(self, sections, *args,**kwargs):
+        super().__init__(*args,**kwargs)
+        self.sections = sections
+    def return_mess(self):
+        return self.sections
 
+def marks_sections(marks, sections):
+    if sections < 2:
+        raise SectionsError(sections, f'{sections} is not a valid number of sections')
+    else:
+        return f"You scored {marks} in {sections} sections"
 
+Total_Marks = int(input("Enter Total Marks Scored: ")) 
+Num_of_Sections = int(input("Enter Num of Sections: "))
+
+marks_sections(Total_Marks, Num_of_Sections)
