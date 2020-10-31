@@ -223,7 +223,26 @@ results = list(set([i for i in range(1,1001) for j in range(2,10) if i%j==0]))
 # You have the following user inputs and the Num_of_sections can not be less than 2.
 # Hint: Create a class derived from the pre-defined Exception class in Python
 
-Total_Marks = int(input("Enter Total Marks Scored: ")) 
-Num_of_Sections = int(input("Enter Num of Sections: "))
+while True:
+    try:
+        Total_Marks = int(input("Enter Total Marks Scored: \n")) 
+    except ValueError:
+        print("Please enter a number")
+    else:
+        break
+        
+while True:
+    try:
+        Num_of_Sections = int(input("Enter Num of Sections: \n"))        
+    except ValueError:
+        print("Please enter a number.")
+    else:
+        while Num_of_Sections < 2:
+            try:
+                Num_of_Sections = int(input("Please enter a number higher than 2.\n"))
+            except ValueError:
+                print("Please enter a number.")
+        else:
+            break
 
 
