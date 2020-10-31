@@ -148,7 +148,7 @@ for i in ['a','b','c']:
     except Exception as e:
         print ("No se puede elevar un caracter al cuadrado")
 
-'''
+
 #15. Handle the exception thrown by the code below by using try and except blocks. 
 #Then use a finally block to print 'All Done.'
 # Check in provided resources the type of error you may use. 
@@ -156,7 +156,14 @@ print(f"------------------------------------- EJERCICIO 15 ---------------------
 x = 5
 y = 0
 
-z = x/y
+try:
+    z = x/y
+
+except ZeroDivisionError:
+    print("Are you mad? No dividing by zero")
+
+finally:
+    print('All Done')
 
 
 
@@ -164,8 +171,19 @@ z = x/y
 #16. Handle the exception thrown by the code below by using try and except blocks. 
 # Check in provided resources the type of error you may use. 
 print(f"------------------------------------- EJERCICIO 16 -------------------------------------")
-abc=[10,20,20]
-print(abc[3])
+
+
+try:
+    abc=[10,20,20]
+    print(abc[3])
+
+except IndexError:
+    print("Error: index out of range")
+
+
+
+
+
 
 
 #17. Handle at least two kind of different exceptions when dividing a couple of numbers provided by the user. 
@@ -173,13 +191,33 @@ print(abc[3])
 # Check in provided resources the type of error you may use. 
 print(f"------------------------------------- EJERCICIO 17 -------------------------------------")
 
+try:
+    a = input("Tell me your first number:\n")
+    b = input("Tell me your second number:\n")
+    print(a/b)
+
+except:
+    if ZeroDivisionError:
+        print("Error: Cannot divide by zero")
+
+    elif TypeError:
+        print("Error: Please enter a number")
+
+
+
+
 
 
 #18. Handle the exception thrown by the code below by using try and except blocks. 
 # Check in provided resources the type of error you may use. 
 print(f"------------------------------------- EJERCICIO 18 -------------------------------------")
-f = open('testfile','r')
-f.write('Test write this')
+
+try:
+    f = open('testfile','r')
+    f.write('Test write this')
+
+except FileNotFoundError: 
+    print("Error: file not found")
 
 
 
@@ -187,9 +225,17 @@ f.write('Test write this')
 #19. Handle the exceptions that can be thrown by the code below using try and except blocks. 
 #Hint: the file could not exist and the data could not be convertable to int
 print(f"------------------------------------- EJERCICIO 19 -------------------------------------")
-fp = open('myfile.txt')
-    line = f.readline()
-    i = int(s.strip())
+
+try:
+    fp = open('myfile.txt')
+        line = f.readline()
+        i = int(s.strip())
+
+except IndentationError as e: 
+    print e
+
+
+
 
 
 
@@ -199,9 +245,23 @@ fp = open('myfile.txt')
 # Handle this exception using try and except blocks. 
 # You will probably need to import sys 
 print(f"------------------------------------- EJERCICIO 20 -------------------------------------")
+
+
+
 def linux_interaction():
     assert ('linux' in sys.platform), "Function can only run on Linux systems."
     print('Doing something.')
+
+
+
+try:
+    linux_interaction()
+
+except AssertionError: 
+    print("ERROR: not a Linux system")
+
+
+
 
 
 # Bonus Questions:
@@ -211,13 +271,21 @@ def linux_interaction():
 #21.  Write a function that asks for an integer and prints the square of it. 
 # Hint: we need to continually keep checking until we get an integer.
 # Use a while loop with a try,except, else block to account for incorrect inputs.
+print(f"------------------------------------- EJERCICIO 21 -------------------------------------")
+def square():
+    while True:
+        number = int(input("What number do you want to square?"))
+        try:
+            return number**2
+        except ValueError:
+            print("Error: that is not a number")
 
-
-
+square()
 
 # 22. Find all of the numbers from 1-1000 that are divisible by any single digit besides 1 (2-9). 
 # Use results as the name of the list 
-
+print(f"------------------------------------- EJERCICIO 22 -------------------------------------")
+results = [n for n in range(1,1001) for number in range(2,10) if not n%number]
 
 
 
@@ -228,5 +296,7 @@ def linux_interaction():
 Total_Marks = int(input("Enter Total Marks Scored: ")) 
 Num_of_Sections = int(input("Enter Num of Sections: "))
 
+if Num_of_Sections < 2:
+    raise Exception ("Sections < 2")
 
-'''
+'
