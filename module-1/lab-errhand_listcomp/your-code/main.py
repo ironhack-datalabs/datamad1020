@@ -261,16 +261,27 @@ integers(number)
 # 22. Find all of the numbers from 1-1000 that are divisible by any single digit besides 1 (2-9). 
 # Use results as the name of the list 
 '''
-for numbers in range(1,1000):
-    if numbers%
+results=[]
+for numbers in range(1,1001):
+    for div in range(2,10):
+        if numbers%div==0:
+            results.append(numbers)
+print(results)
 '''
-
-
 # 23. Define a customised exception to handle not accepted values. 
 # You have the following user inputs and the Num_of_sections can not be less than 2.
 # Hint: Create a class derived from the pre-defined Exception class in Python
 '''
 Total_Marks = int(input("Enter Total Marks Scored: ")) 
 Num_of_Sections = int(input("Enter Num of Sections: "))
-'''
 
+class NotAccepted (Exception):
+    def __init__(self,Total_Marks, Num_of_Sections):
+        self.Total_Marks= Total_Marks
+        self.Num_of_Sections =Num_of_Sections
+        if (Total_Marks != [0,1,2,3,4,5,6,7,8,9]) or (Num_of_Sections != [0,1,2,3,4,5,6,7,8,9]):
+            print("You have to introduce a number")
+        elif Num_of_Sections<2:
+            print("The Num of Sections should be higher tan 2")
+        
+'''
