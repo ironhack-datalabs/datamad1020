@@ -180,7 +180,7 @@ try:
     print(x/y)
 except ZeroDivisionError:
     print("ZeroDivisionError: No dividing by zero")
-except ValueError: # try...catch
+except ValueError:
     print("ValueError: Could not operate. Please input integers or floats.")
 
 #18. Handle the exception thrown by the code below by using try and except blocks. 
@@ -218,6 +218,10 @@ print("Exercise 20")
 def linux_interaction():
     assert ('linux' in sys.platform), "Function can only run on Linux systems."
     print('Doing something.')
+try:
+    linux_interaction()
+except AssertionError:
+    print("AssertionError: This function can only run on Linux system")
 
 
 # Bonus Questions:
@@ -229,12 +233,29 @@ def linux_interaction():
 # Use a while loop with a try,except, else block to account for incorrect inputs.
 print("Exercise 21")
 
+def square():
+    number =int(input("Please write the number you would like to square: ")
+    print(number**2)
 
-
+while True: 
+    try: 
+        square()
+    except ValueError:
+            print("Number must be an integer")
 
 # 22. Find all of the numbers from 1-1000 that are divisible by any single digit besides 1 (2-9). 
 # Use results as the name of the list 
 print("Exercise 22")
+
+results = []
+for n in range(1,1000):
+    cont = 0
+    for x in range(1,10):
+        if n%x ==0:
+            cont += 1
+    if len(range(1,10)) == cont:
+        results.append(n)
+print(results)
 '''
 results = []
 for n in range(1,1000):
@@ -246,17 +267,6 @@ for n in range(1,1000):
     if is_divisible_by_range:
         results.append(n)
 '''
-results = []
-for n in range(1,1000):
-    cont = 0
-    for x in range(1,10):
-        if n%x ==0:
-            cont += 1
-    if len(range(1,10)) == cont:
-        results.append(n)
-print(results)
-
-'''
 
 # 23. Define a customised exception to handle not accepted values. 
 # You have the following user inputs and the Num_of_sections can not be less than 2.
@@ -266,5 +276,5 @@ print("Exercise 23")
 Total_Marks = int(input("Enter Total Marks Scored: ")) 
 Num_of_Sections = int(input("Enter Num of Sections: "))
 
-
-'''
+if Num_of_Sections<2:
+    raise Exception("Num of sections cannot be less than 2")
