@@ -10,6 +10,7 @@ print(my_listComprehension)
 import math
 from os import listdir
 import random
+import sys
 
 
 #1. Calculate the square number of the first 20 numbers. Use square as the name of the list.
@@ -181,10 +182,15 @@ except NameError as e:
 #19. Handle the exceptions that can be thrown by the code below using try and except blocks. 
 #Hint: the file could not exist and the data could not be convertable to int
 
-fp = open('myfile.txt')
+try:
+    fp = open('myfile.txt')
     line = f.readline()
     i = int(s.strip())
-
+except FileNotFoundError as fnf_error:
+    print(fnf_error)
+except ValueError as e:
+    print(e)
+    print("Could not convert string to integer.")
 
 
 
@@ -196,6 +202,12 @@ fp = open('myfile.txt')
 def linux_interaction():
     assert ('linux' in sys.platform), "Function can only run on Linux systems."
     print('Doing something.')
+
+try:
+    linux_interaction()
+except AssertionError as e:
+    print(e)
+    print("The linux_interaction() function cannot be executed.")
 
 
 # Bonus Questions:
@@ -212,7 +224,8 @@ def linux_interaction():
 # 22. Find all of the numbers from 1-1000 that are divisible by any single digit besides 1 (2-9). 
 # Use results as the name of the list 
 
-
+results = [item for item in range(1,1001) if any (item % div == 0 for div in range(2,10))]
+results
 
 
 # 23. Define a customised exception to handle not accepted values. 
