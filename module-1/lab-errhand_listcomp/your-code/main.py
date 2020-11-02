@@ -8,8 +8,9 @@ print(my_listComprehension)
 
 #Insert here the module/library import statements 
 import math
-
-
+import os
+import random
+import sys
 
 #1. Calculate the square number of the first 20 numbers. Use square as the name of the list.
 # Remember to use list comprehensions and to print your results
@@ -174,9 +175,12 @@ except IOError:
 #19. Handle the exceptions that can be thrown by the code below using try and except blocks. 
 #Hint: the file could not exist and the data could not be convertable to int
 
-fp = open('myfile.txt')
+try:
+    fp = open('myfile.txt')
     line = f.readline()
     i = int(s.strip())
+except (NameError, IOError):
+    print("Name error is: ")
 
 
 
@@ -189,6 +193,11 @@ fp = open('myfile.txt')
 def linux_interaction():
     assert ('linux' in sys.platform), "Function can only run on Linux systems."
     print('Doing something.')
+    
+try:
+    linux_interaction()
+except:
+    print("This function only works on Linux")
 
 
 # Bonus Questions:
