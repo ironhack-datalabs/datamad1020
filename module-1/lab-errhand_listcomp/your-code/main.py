@@ -132,13 +132,13 @@ except IndexError:
 # #17. Handle at least two kind of different exceptions when dividing a couple of numbers provided by the user. 
 # # Hint: take a look on python input function. 
 # # Check in provided resources the type of error you may use. 
-# try:
-#     a = int(input('provide an number: '))
-#     b = int(input('provide another one: '))
-# except ValueError:
-#     print("You havn't provided an integer")
-# except ZeroDivisionError:
-#     print("You'r trying to devide a number by 0, that's not possible")
+try:
+    a = int(input('provide an number: '))
+    b = int(input('provide another one: '))
+except ValueError:
+    print("You havn't provided an integer")
+except ZeroDivisionError:
+    print("You'r trying to devide a number by 0, that's not possible")
 
 # #18. Handle the exception thrown by the code below by using try and except blocks. 
 # # Check in provided resources the type of error you may use. 
@@ -171,7 +171,7 @@ def linux_interaction():
 try:
     linux_interaction()
 except AssertionError:
-    pass
+    print('not a linux system')
 
 # # Bonus Questions:
 # # You will need to make some research on dictionary comprehension to solve the following questions
