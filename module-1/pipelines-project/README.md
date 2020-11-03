@@ -53,15 +53,17 @@ The technical requirements for this project are as follows:
 
 * **Examine the data**.
 
-* **Break the project down into different steps** - leverage the stages of the your pipeline.
+* **Break the project down into different steps** - A hundred simple tasks are better than a single complicated one
 
 * **Use the tools in your tool kit** - your knowledge of intermediate Python as well as some of the things you've learned in the bootcamp. This is a great way to start tying everything you've learned together!
 
-* **Work through the lessons in class** & ask questions when you need to! Think about adding relevant code to your project each night, instead of, you know... _procrastinating_.
+* **Work through the lessons in class** & ask questions when you need to! 
 
-* **Commit early, commit often**, don’t be afraid of doing something incorrectly because you can always roll back to a previous version.
+* Think about adding relevant code to your project each day, instead of, you know... _procrastinating_.
 
-* **Consult documentation and resources provided** to better understand the tools you are using and how to accomplish what you want.
+* **Commit early, commit often**, don’t be afraid of doing something incorrectly because you can always roll back to a previous version. Name your commits well.
+
+* **Consult documentation and resources provided** to better understand the tools you are using and how to accomplish what you want. GIYF.
 
 * **Have fun! Never give up! Be proud of your work!**
 
