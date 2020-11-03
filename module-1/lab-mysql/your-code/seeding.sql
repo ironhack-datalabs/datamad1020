@@ -1,0 +1,5 @@
+INSERT INTO Invoices(`Invoice Number`,Date,Car,Customer,`Sales Person`) VALUES
+(852399038,'2018-08-22 00:00:00',0,1,3),
+(731166526,'2018-12-31 00:00:00',3,0,5),
+(271135104,'2019-01-22 00:00:00',2,2,7);
+
