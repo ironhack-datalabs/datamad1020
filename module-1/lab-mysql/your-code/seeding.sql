@@ -21,6 +21,6 @@ INSERT INTO salesperson VALUES
 (DEFAULT,00008,"Shonda", "Leer","São Paulo" );
 
 INSERT INTO invoices VALUES 
-(DEFAULT,852399038,'2018-08-22',0,1,3),
-(DEFAULT,731166526,'2018-12-31',3,0,5),
-(DEFAULT,271135104,'2019-01-22',2,2,7);
+(DEFAULT,852399038,'2018-08-22',(SELECT idcars from cars.cars WHERE idcars=0),(SELECT idc from cars.customer WHERE idc=1), (SELECT ids from cars.salesperson WHERE ids=3)),
+(DEFAULT,731166526,'2018-12-31',(SELECT idcars from cars.cars WHERE idcars=3),(SELECT idc from cars.customer WHERE idc=0), (SELECT ids from cars.salesperson WHERE ids=5)),
+(DEFAULT,271135104,'2019-01-22',(SELECT idcars from cars.cars WHERE idcars=2),(SELECT idc from cars.customer WHERE idc=2), (SELECT ids from cars.salesperson WHERE ids=7));
