@@ -1,1 +1,0 @@
-USE lab_mysql;
