@@ -29,11 +29,11 @@ GROUP BY a.au_id, PUBLISHER;
 SELECT a.au_id AS 'AUTHOR ID', a.au_lname AS 'LAST NAME', a.au_fname AS 'FIRST NAME',
  SUM(s.qty) AS 'TOTAL'
 FROM authors AS a
-JOIN titleauthor AS ta
+LEFT JOIN titleauthor AS ta
 ON a.au_id=ta.au_id
-JOIN titles AS t
+LEFT JOIN titles AS t
 ON ta.title_id=t.title_id
-JOIN sales AS s
+LEFT JOIN sales AS s
 ON s.title_id=t.title_id
 GROUP BY a.au_id
 ORDER BY TOTAL DESC
@@ -41,15 +41,16 @@ LIMIT 3;
 
 -- Challange 4 --
 
-SELECT a.au_id AS 'AUTHOR ID', a.au_lname AS 'LAST NAME', a.au_fname AS 'FIRST NAME',
- SUM(s.qty) AS 'TOTAL'
+SELECT a.au_id AS 'AUTHOR ID', a.au_lname AS 'LAST NAME', a.au_fname AS 'FIRST NAME', COALESCE(SUM(s.qty),0) AS 'TOTAL'
 FROM authors AS a
-JOIN titleauthor AS ta
+LEFT JOIN titleauthor AS ta
 ON a.au_id=ta.au_id
-JOIN titles AS t
+LEFT JOIN titles AS t
 ON ta.title_id=t.title_id
-JOIN sales AS s
+LEFT JOIN sales AS s
 ON s.title_id=t.title_id
 GROUP BY a.au_id
 ORDER BY TOTAL DESC
 LIMIT 23;
+
+
