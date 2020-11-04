@@ -31,7 +31,10 @@ FROM lab_sql_select.titles as t
 		ON ta.au_id = a.au_id
 	 JOIN lab_sql_select.publishers AS p
 		ON t.pub_id = p.pub_id;
-        
+
+SELECT `temp`.`AUTHOR ID`, `temp`.`LAST NAME`, `temp`.`FIRST NAME`,`temp`.`PUBLISHER`, COUNT(`temp`.`TITLE`) as `TITLE COUNT`
+from `temp`
+ GROUP BY `temp`.`AUTHOR ID`, `temp`.`PUBLISHER`;
 
 -- CHALLENGE 3
 SELECT a.au_id AS `AUTHOR ID`, a.au_lname AS `LAST NAME`, a.au_fname AS `FIRST NAME`, SUM(t.ytd_sales) as `TOTAL`  
