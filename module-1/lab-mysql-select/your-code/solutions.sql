@@ -34,7 +34,7 @@ FROM lab_sql_select.titles as t
         
 
 -- CHALLENGE 3
-SELECT a.au_id AS `AUTHOR ID`, a.au_lname AS `LAST NAME`, a.au_fname AS `FIRST NAME`, p.pub_name AS `PUBLISHER`, COUNT(t.title) as `TITLE COUNT`  
+SELECT a.au_id AS `AUTHOR ID`, a.au_lname AS `LAST NAME`, a.au_fname AS `FIRST NAME`, SUM(s.qty) as `TOTAL`  
 FROM lab_sql_select.titles as t
 	 JOIN lab_sql_select.titleauthor AS ta
 		ON ta.title_id = t.title_id
@@ -44,12 +44,12 @@ FROM lab_sql_select.titles as t
 		ON t.pub_id = p.pub_id
 	 JOIN lab_sql_select.sales AS s
 		ON t.title_id = s.title_id        
-GROUP BY `AUTHOR ID`, `PUBLISHER`
+GROUP BY `AUTHOR ID`, p.pub_name
 ORDER BY SUM(s.qty) DESC
 LIMIT 3;
 
 -- CHALLENGE 4
-SELECT a.au_id AS `AUTHOR ID`, a.au_lname AS `LAST NAME`, a.au_fname AS `FIRST NAME`, p.pub_name AS `PUBLISHER`, COUNT(t.title) as `TITLE COUNT`  
+SELECT a.au_id AS `AUTHOR ID`, a.au_lname AS `LAST NAME`, a.au_fname AS `FIRST NAME`, SUM(s.qty) as `TOTAL`    
 FROM lab_sql_select.titles as t
 	 JOIN lab_sql_select.titleauthor AS ta
 		ON ta.title_id = t.title_id
@@ -59,5 +59,5 @@ FROM lab_sql_select.titles as t
 		ON t.pub_id = p.pub_id
 	 JOIN lab_sql_select.sales AS s
 		ON t.title_id = s.title_id        
-GROUP BY `AUTHOR ID`, `PUBLISHER`
+GROUP BY `AUTHOR ID`, p.pub_name
 ORDER BY SUM(s.qty) DESC;
