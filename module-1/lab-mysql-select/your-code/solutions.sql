@@ -32,9 +32,9 @@ FROM lab_sql_select.titles as t
 	 JOIN lab_sql_select.publishers AS p
 		ON t.pub_id = p.pub_id;
 
-SELECT `temp`.`AUTHOR ID`, `temp`.`LAST NAME`, `temp`.`FIRST NAME`,`temp`.`PUBLISHER`, COUNT(`temp`.`TITLE`) as `TITLE COUNT`
-from `temp`
- GROUP BY `temp`.`AUTHOR ID`, `temp`.`PUBLISHER`;
+-- SELECT `temp`.`AUTHOR ID`, `temp`.`LAST NAME`, `temp`.`FIRST NAME`,`temp`.`PUBLISHER`, COUNT(`temp`.`TITLE`) as `TITLE COUNT`
+-- FROM `temp` GROUP BY `temp`.`AUTHOR ID`, `temp`.`PUBLISHER`;  
+-- ERROR HERE, I dont know why, as it is the same grouping as previously...
 
 -- CHALLENGE 3
 SELECT a.au_id AS `AUTHOR ID`, a.au_lname AS `LAST NAME`, a.au_fname AS `FIRST NAME`, SUM(t.ytd_sales) as `TOTAL`  
@@ -64,7 +64,7 @@ GROUP BY `AUTHOR ID`, p.pub_name
 ORDER BY SUM(t.ytd_sales) DESC;
 
 -- BONUS
-SELECT a.au_id AS `AUTHOR ID`, a.au_lname AS `LAST NAME`, a.au_fname AS `FIRST NAME`, (SUM(t.ytd_sales*t.royalty+t.advance)) as `PORFIT`    
+SELECT a.au_id AS `AUTHOR ID`, a.au_lname AS `LAST NAME`, a.au_fname AS `FIRST NAME`, (SUM(t.ytd_sales*(t.royalty/100)+t.advance)) as `PORFIT`    
 FROM lab_sql_select.titles as t
 	 JOIN lab_sql_select.titleauthor AS ta
 		ON ta.title_id = t.title_id
@@ -72,6 +72,6 @@ FROM lab_sql_select.titles as t
 		ON ta.au_id = a.au_id
 	 JOIN lab_sql_select.publishers AS p
 		ON t.pub_id = p.pub_id      
-GROUP BY `AUTHOR ID`, p.pub_name  -- Might come back later, the selected 
+GROUP BY `AUTHOR ID`, p.pub_name  
 ORDER BY `PORFIT` DESC
 LIMIT 3;
