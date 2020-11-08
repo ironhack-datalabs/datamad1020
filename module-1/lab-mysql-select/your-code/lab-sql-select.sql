@@ -4,8 +4,8 @@
 SELECT  p.au_id AS "AUTHOR ID",
         p.au_fname AS "FIRST NAME",
         p.au_lname AS "LAST NAME",
-		titles.title AS "TITLE",
-		publishers.pub_name AS "PUBLISHER"
+	titles.title AS "TITLE",
+	publishers.pub_name AS "PUBLISHER"
 
 FROM publications.authors AS p
 JOIN titleauthor
@@ -32,7 +32,7 @@ GROUP BY "AUTHOR ID", PUBLISHER;
 
 --CHALLENGE  3
 SELECT  p.au_id AS "AUTHOR ID",
-	    p.au_fname AS "FIRST NAME",
+	p.au_fname AS "FIRST NAME",
      	p.au_lname AS "LAST NAME",
         SUM(DISTINCT s.qty) AS `TOTAL`
 
