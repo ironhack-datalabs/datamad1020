@@ -11,25 +11,24 @@ headers = {
     "Authorization": f"token {gh_token}"
 }
 parameters = {
-    "state":"all",
-    "ref":'master',
-    "recursive": "sha"
+    "state":"all"
     
     
 }
 
 url = "https://api.github.com"
-endpoint = "/repos/{owner}/{repo}/git/trees/{tree_sha}"
+endpoint = "/repos/{owner}/{repo}/contents"
 repo_info = {
     "owner":"ironhack-datalabs",
     "repo":"scavenger",
-    'tree_sha':'master'
+    "content":"content"
       
 }
 
 secretos = requests.get(url+endpoint.format(**repo_info),headers=headers,params = parameters).json()
+print(secretos)
 
-print("---------------------------------------------------------")
+""""print("---------------------------------------------------------")
 tree = secretos["tree"]
 
 path = [tree[i]["path"] for i in range(len(tree))]
@@ -45,9 +44,10 @@ for e in lst:
 	archivos.append(e[6:])
 print(archivos)
 
+https://api.github.com/ironhack-datalabs/scavenger/contents
 
-
-#https://api.github.com/repos/ironhack-datalabs/scavenger/git/trees/master
+#https://api.github.com/repos/ironhack-datalabs/scavenger/git/blobs
 
 #path = [secretos[i]['path'] for i in range(len(secretos))]	
 #print(path)
+"""
