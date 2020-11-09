@@ -3,6 +3,7 @@ import os
 import re 
 import requests
 import datetime
+from github_contents import GithubContents
 
 load_dotenv()
 
@@ -24,6 +25,9 @@ parameters = {
 }
 
 ######## CHALLENGE 1 ########
+#print('\n')
+#print('--------------------------------- CHALLENGE 1 ---------------------------------')
+#print('\n')
 
 data = requests.get(url+endpoint.format(**repo_info), headers=headers, params=parameters)
 
@@ -42,6 +46,9 @@ data = data.json()
 #print(languages)
 
 ######## CHALLENGE 2 ########
+#print('\n')
+#print('--------------------------------- CHALLENGE 2 ---------------------------------')
+#print('\n')
 
 #endpoint = "/repos/{owner}/{repo}/commits"
 #data = requests.get(url+endpoint.format(**repo_info), headers=headers, params=parameters)
@@ -63,7 +70,47 @@ data = data.json()
 #print(len(lastw_commits))
 
 ######## CHALLENGE 3 ########
-    
+#print('\n')
+#print('--------------------------------- CHALLENGE 3 ---------------------------------')
+#print('\n')    
+
+url = 'https://api.github.com'
+
+headers = {
+    'Authorization' : f'token {gh_token}'
+}
+
+parameters = {
+    'state': 'all'
+}
+
+data = requests.get(url+"/repos/ironhack-datalabs/scavenger/contents", headers=headers, params=parameters)
+data = data.json()
+
+paths_list = [element['path'] for element in data if element['path'] != '.gitignore']
+
+scavengers = []
+for path in paths_list:
+    endpoint = f"/repos/ironhack-datalabs/scavenger/contents/{path}"
+
+    data = requests.get(url+endpoint.format(path), headers=headers, params=parameters)
+    data = data.json()
+
+    for element in data:
+        if '.scavengerhunt' in element['name']:
+            scavengers.append((int(element['name'].replace('.', '').replace('scavengerhunt', '')), element['path']))
+
+scavengers = sorted(scavengers)
+
+github = GithubContents('ironhack-datalabs', 'scavenger', gh_token)
+
+string = []
+for file in scavengers:
+    content, sha = github.read(file[1])
+    string.append(content.decode('utf-8').strip())
+
+string = ' '.join(string)
+print(string)
 
 
 
