@@ -4,6 +4,7 @@ import re
 import requests
 import datetime
 from github_contents import GithubContents
+from bs4 import BeautifulSoup
 
 load_dotenv()
 
@@ -25,61 +26,59 @@ parameters = {
 }
 
 ######## CHALLENGE 1 ########
-#print('\n')
-#print('--------------------------------- CHALLENGE 1 ---------------------------------')
-#print('\n')
+print('\n')
+print('--------------------------------- CHALLENGE 1 ---------------------------------')
+print('\n')
 
 data = requests.get(url+endpoint.format(**repo_info), headers=headers, params=parameters)
-
 data = data.json()
 
 ## 1 ##
-
-#forks = [fork['owner']['login'] for fork in data]
+forks = [fork['owner']['login'] for fork in data]
 
 ## 2 ##
+name_lang = [(fork['full_name'], fork['languages_url']) for fork in data]
 
-#languages = [fork['languages_url'] for fork in data]  #### APILAR LOS ENLACES
+languages = {}
+for link in name_lang:
+    data = requests.get(link[1])
+    soup = BeautifulSoup(data.text, 'html.parser')
+    languages[link[0]] = soup.text
 
 ## 3 ##
-
-#print(languages)
+print(languages)
 
 ######## CHALLENGE 2 ########
-#print('\n')
-#print('--------------------------------- CHALLENGE 2 ---------------------------------')
-#print('\n')
+print('\n')
+print('--------------------------------- CHALLENGE 2 ---------------------------------')
+print('\n')
 
-#endpoint = "/repos/{owner}/{repo}/commits"
-#data = requests.get(url+endpoint.format(**repo_info), headers=headers, params=parameters)
-#data = data.json()
+endpoint = "/repos/{owner}/{repo}/commits"
+data = requests.get(url+endpoint.format(**repo_info), headers=headers, params=parameters)
+data = data.json()
 
 ## 1 ## 
-
-#lastw_commits = []
-#for commit in data:
- #   date = commit['commit']['committer']['date'].split('T')[0]
- #   date_obj = datetime.datetime.strptime(date, '%Y-%m-%d')
- #   if date_obj >= datetime.datetime.strptime('2020-11-02', '%Y-%m-%d'):
-  #      lastw_commits.append([commit['commit']['committer']['name'], 
-   #                           commit['commit']['committer']['email'], 
-   #                           datetime.datetime.strptime(commit['commit']['committer']['date'], '%Y-%m-%dT%H:%M:%SZ')])
+lastw_commits = []
+for commit in data:
+    date = commit['commit']['committer']['date'].split('T')[0]
+    date_obj = datetime.datetime.strptime(date, '%Y-%m-%d')
+    if date_obj >= datetime.datetime.strptime('2020-11-02', '%Y-%m-%d'):
+        lastw_commits.append([commit['commit']['committer']['name'], 
+                              commit['commit']['committer']['email'], 
+                              datetime.datetime.strptime(commit['commit']['committer']['date'], '%Y-%m-%dT%H:%M:%SZ')])
 
 ## 2 ##
-
-#print(len(lastw_commits))
+print(len(lastw_commits))
 
 ######## CHALLENGE 3 ########
-#print('\n')
-#print('--------------------------------- CHALLENGE 3 ---------------------------------')
-#print('\n')    
+print('\n')
+print('--------------------------------- CHALLENGE 3 ---------------------------------')
+print('\n')    
 
 url = 'https://api.github.com'
-
 headers = {
     'Authorization' : f'token {gh_token}'
 }
-
 parameters = {
     'state': 'all'
 }
