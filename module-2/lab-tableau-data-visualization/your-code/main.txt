@@ -1,0 +1,6 @@
+
+lab:
+https://public.tableau.com/profile/isabel.searle.riesgo#!/vizhome/lab_tableau_data_visualization/Dashboard1?publish=yes
+
+bonus:
+https://public.tableau.com/profile/isabel.searle.riesgo#!/vizhome/bonus_tableau_lab/Dashboard1?publish=yes
