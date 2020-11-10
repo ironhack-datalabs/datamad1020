@@ -1,0 +1,2 @@
+URL of the Dashboard in Tableau: https://public.tableau.com/profile/alba.lvaro#!/vizhome/lab-tableau-data-visualization_16050261140790/NFLTeamPerformanceDashboard
+URL of the bonus: https://public.tableau.com/profile/alba.lvaro#!/vizhome/lab-tableau-data-visualization-bonus_16050296842240/Dashboard1?publish=yes
