@@ -1,4 +1,4 @@
-# GeoSpacial Data Project
+# GeoSpatial Data Project
 
 ## TODO's
 
